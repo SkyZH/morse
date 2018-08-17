@@ -30,7 +30,7 @@ import _ from 'lodash';
 import { Recoverable } from 'repl';
 import { MorseQuery, MorseBuild } from './morsetree';
 
-const audioCtx: AudioContext = new ((<any>window)['AudioContext']);
+const audioCtx: AudioContext = new ((<any>window)['AudioContext'] || (<any>window)['webkitAudioContext']);
 const transmissionSpeed = 10;
 const receiveDelta = 5;
 const fftSize = 4096;
@@ -43,7 +43,7 @@ const receiveM = 0.02;
 export default class Morse extends Vue {
   private analyser: AnalyserNode | null = null;
   private dataArray: Float32Array | null = null;
-  
+
   mounted() {
     this.stream();
   }

@@ -1,5 +1,7 @@
 # morse
 
+[![Build Status](https://travis-ci.com/SkyZH/morse.svg?branch=master)](https://travis-ci.com/SkyZH/morse)
+
 ## Project setup
 ```
 yarn install

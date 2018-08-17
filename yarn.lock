@@ -3176,6 +3176,10 @@ get-caller-file@^1.0.1:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/get-caller-file/-/get-caller-file-1.0.3.tgz#f978fa4c90d1dfe7ff2d6beda2a515e713bdcf4a"
 
+get-float-time-domain-data@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/get-float-time-domain-data/-/get-float-time-domain-data-0.1.0.tgz#5d855924a4303884c9638aab127cce4d0065963b"
+
 get-stdin@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/get-stdin/-/get-stdin-4.0.1.tgz#b968c6b0a04384324902e8bf1a5df32579a450fe"

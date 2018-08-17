@@ -30,7 +30,8 @@ import _ from 'lodash';
 import { Recoverable } from 'repl';
 import { MorseQuery, MorseBuild } from './morsetree';
 
-const audioCtx: AudioContext = new ((<any>window)['AudioContext'] || (<any>window)['webkitAudioContext']);
+let _window: any = window;
+const audioCtx: AudioContext = new ((_window)['AudioContext'] || (_window)['webkitAudioContext']);
 const transmissionSpeed = 10;
 const receiveDelta = 5;
 const fftSize = 4096;
@@ -41,6 +42,7 @@ const receiveM = 0.02;
 
 @Component
 export default class Morse extends Vue {
+
   private analyser: AnalyserNode | null = null;
   private dataArray: Float32Array | null = null;
 
@@ -143,8 +145,9 @@ export default class Morse extends Vue {
   }
 
   playSound(buf: Float32Array) {
-    let buffer = audioCtx.createBuffer(1, buf.length, audioCtx.sampleRate)
-    buffer.copyToChannel(buf, 0)
+    let buffer = audioCtx.createBuffer(1, buf.length, audioCtx.sampleRate);
+    let _buf = buffer.getChannelData(0);
+    for (let i = 0; i < buf.length; i++) _buf[i] = buf[i];
     let source = audioCtx.createBufferSource();
     source.buffer = buffer;
     source.connect(audioCtx.destination);
@@ -152,7 +155,7 @@ export default class Morse extends Vue {
   }
 
   fn(data: number) {
-    const e = 10.0;
+    const e = 20.0;
     if (data < 0) return -Math.pow(-data, e);
     else return Math.pow(data, e);
   }

@@ -41,12 +41,12 @@ const receiveM = 0.02;
 
 @Component
 export default class Morse extends Vue {
+  private analyser: AnalyserNode | null = null;
+  private dataArray: Float32Array | null = null;
+  
   mounted() {
     this.stream();
   }
-
-  private analyser: AnalyserNode | null = null;
-  private dataArray: Float32Array | null = null;
 
   stream() {
     this.analyser = audioCtx.createAnalyser();

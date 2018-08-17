@@ -20,18 +20,18 @@ const add = (code: string, result: string) => {
   for (let i = 0; i < code.length; i++) {
     let c = code[i];
     if (!(c in cur.children)) {
-      cur.children[c] = <Node> ({ data: null, children: {} });
+      cur.children[c] = { data: null, children: {} };
     }
     cur = cur.children[c];
   }
   cur.data = result;
-};
+}
 
 const init = () => {
-  root = <Node> ({ data: null, children: {} });
+  root = { data: null, children: {} };
   for (let i = 0; i < morseCode.length; i++) {
     add(morseCode[i], abc[i]);
-  };
+  }
 }
 
 init();
